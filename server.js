@@ -28,18 +28,19 @@ mongoose
 const instrumentsRoutes = require("./routes/instruments");
 app.use("/instrumentos", instrumentsRoutes);
 
-// Middleware para rotas não encontradas, de modo a incluir os headers CORS
+// Rota de teste para verificar a resposta do servidor
+app.get("/test", (req, res) => {
+  res.json({ message: "Teste funcionando!" });
+});
+
+// Middleware para rotas não encontradas que envia os headers CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://frontinstrument.netlify.app");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   if (req.method === "OPTIONS") {
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
     return res.status(200).json({});
   }
-  // Se a rota não foi encontrada, responda com 404
   res.status(404).json({ error: "Rota não encontrada" });
 });
 
