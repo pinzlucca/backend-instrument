@@ -6,8 +6,13 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configuração do CORS para permitir apenas o domínio do frontend
+app.use(cors({ origin: "https://frontinstrument.netlify.app" }));
+
+// Habilita o tratamento de requisições preflight para todas as rotas
+app.options('*', cors());
+
 // Middlewares
-app.use(cors());
 app.use(express.json());
 
 // Conexão com o MongoDB
@@ -19,7 +24,7 @@ mongoose
   .then(() => console.log("🟢 Conectado ao MongoDB"))
   .catch((err) => console.error("Erro na conexão com o MongoDB:", err));
 
-// Importar e registrar as rotas dos instrumentos
+// Importa e registra as rotas dos instrumentos
 const instrumentsRoutes = require("./routes/instruments");
 app.use("/instrumentos", instrumentsRoutes);
 
