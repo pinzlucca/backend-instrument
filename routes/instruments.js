@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Instrument = require("./models/Instrument");
+const path = require("path");
+const Instrument = require(path.join(__dirname, "../models/Instrument"));
 
 const addDays = (date, days) => {
   const result = new Date(date);
