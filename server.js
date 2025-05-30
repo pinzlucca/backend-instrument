@@ -6,10 +6,10 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configuração do CORS para permitir apenas o domínio do frontend
+// Habilita o CORS para o seu frontend
 app.use(cors({ origin: "https://frontinstrument.netlify.app" }));
 
-// Habilita o tratamento de requisições preflight para todas as rotas
+// Trata requisições OPTIONS para todas as rotas (preflight)
 app.options('*', cors());
 
 // Middlewares
@@ -27,6 +27,21 @@ mongoose
 // Importa e registra as rotas dos instrumentos
 const instrumentsRoutes = require("./routes/instruments");
 app.use("/instrumentos", instrumentsRoutes);
+
+// Middleware para rotas não encontradas, de modo a incluir os headers CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://frontinstrument.netlify.app");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+    return res.status(200).json({});
+  }
+  // Se a rota não foi encontrada, responda com 404
+  res.status(404).json({ error: "Rota não encontrada" });
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
