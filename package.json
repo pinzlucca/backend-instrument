@@ -9,7 +9,7 @@
 {
   "name": "instrumentos-app",
   "version": "1.0.0",
-  "main": "server.js",  ✅ Confirme se está correto
+  "main": "server.js", 
   "scripts": {
     "start": "node server.js"
   }
