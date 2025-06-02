@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Habilita o CORS para o seu frontend
-app.use(cors({ origin: "https://frontinstrument.netlify.app" }));
+app.use(cors({ origin: "https://instrumento.netlify.app/" }));
 
 // Trata requisições OPTIONS para todas as rotas (preflight)
 app.options('*', cors());
