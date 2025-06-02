@@ -6,11 +6,11 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Habilita o CORS para o seu frontend
-app.use(cors({ origin: "https://instrumento.netlify.app/" }));
+// ✅ Corrigido: sem barra no final
+app.use(cors({ origin: "https://instrumento.netlify.app" }));
 
-// Trata requisições OPTIONS para todas as rotas (preflight)
-app.options('*', cors());
+// Preflight
+app.options("*", cors());
 
 // Middlewares
 app.use(express.json());
@@ -24,18 +24,18 @@ mongoose
   .then(() => console.log("🟢 Conectado ao MongoDB"))
   .catch((err) => console.error("Erro na conexão com o MongoDB:", err));
 
-// Importa e registra as rotas dos instrumentos
+// Rotas
 const instrumentsRoutes = require("./routes/instruments");
 app.use("/instrumentos", instrumentsRoutes);
 
-// Rota de teste para verificar a resposta do servidor
+// Teste
 app.get("/test", (req, res) => {
   res.json({ message: "Teste funcionando!" });
 });
 
-// Middleware para rotas não encontradas que envia os headers CORS
+// Middleware 404 com headers CORS
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://instrumento.netlify.app/");
+  res.header("Access-Control-Allow-Origin", "https://instrumento.netlify.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   if (req.method === "OPTIONS") {
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
