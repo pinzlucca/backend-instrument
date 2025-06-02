@@ -21,7 +21,7 @@ Este é o backend de um sistema para gerenciamento de instrumentos musicais em a
 - Dotenv
 
 ## 📁 Estrutura de Arquivos
-backend/
+backend-instrument/
 ├── models/
 │ └── Instrumento.js # Schema do instrumento
 ├── routes/
