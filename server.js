@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ Corrigido: sem barra no final
-app.use(cors({ origin: "https://tecnologiaessencial.com.br/front/" }));
+app.use(cors({ origin: "https://tecnologiaessencial.com.br" }));
 
 // Preflight
 app.options("*", cors());
