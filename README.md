@@ -8,7 +8,7 @@ Este é o backend de um sistema para gerenciamento de instrumentos musicais em a
 - 🔁 Mudança manual ou automática de status
 - 📅 Histórico com data/hora de cada mudança de status
 - ⏳ Transição automática para:
-  - `em garantia` por 90 dias após conclusão do serviço
+- `em garantia` por 90 dias após conclusão do serviço
 - ❌ Exclusão de instrumentos manualmente
 - 🌐 API REST com endpoints
 
@@ -21,12 +21,14 @@ Este é o backend de um sistema para gerenciamento de instrumentos musicais em a
 - Dotenv
 
 ## 📁 Estrutura de Arquivos
+```
 backend-instrument/
 ├── models/
-│ └── Instrumento.js # Schema do instrumento
+│   └── Instrumento.js       # Schema do instrumento
 ├── routes/
-│ └── instrumentos.js # Rotas da API
-├── .env # Variáveis de ambiente (ex: MONGO_URI)
-├── server.js # Arquivo principal
-├── package.json # Dependências
+│   └── instrumentos.js      # Rotas da API
+├── .env                     # Variáveis de ambiente (ex: MONGO_URI)
+├── server.js                # Arquivo principal
+├── package.json             # Dependências
 └── README.md
+```
