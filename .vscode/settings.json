@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+
+        {
+            "mysqlOptions": {
+                "authProtocol": "null",
+                "enableSsl": "null"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "essencial_indica",
+            "database": "essen2324_Indica",
+            "username": "fezao"
+        }
+    ]
+}
