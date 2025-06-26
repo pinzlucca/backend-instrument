@@ -88,6 +88,10 @@ const protectRoute = (req, res, next) => {
 };
 app.use("/instrumentos", protectRoute, instrumentsRoutes);
 
+app.get("/test", (req, res) => {
+  res.json({ message: "Teste funcionando!" });
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
